@@ -24,3 +24,7 @@ int main()
     
 }
 
+// Kết quả:
+// Nhap n: 4
+// S = 1+2+3+4
+// Tong cua S:10

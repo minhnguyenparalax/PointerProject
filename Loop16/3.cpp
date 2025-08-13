@@ -22,6 +22,7 @@ int main()
         {
             cout<< ".";
         }
+
         cout<<i;
         gt = gt*i;
     }
@@ -29,3 +30,7 @@ int main()
     
 }
 
+// Kết quả:
+// Nhap n: 3
+// n! = 1.2.3
+// Giai thua cua n la:6
