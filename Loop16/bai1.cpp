@@ -20,7 +20,7 @@ int main()
         cout << "+" << i;
         S += i;
     }
-    cout<< "\nTong cua S:" << S;
+    cout<< "\nTong cua S:" << S+1;
     
 }
 
