@@ -16,19 +16,24 @@ using namespace std;
 int main()
 {
     int n;
-    float kt;
+    bool kt = true;
     
     cout<<"Nhap so nguyen to n: ";
     cin>>n;
 
     for(int i = 2; i<n; i++)
     {
-        kt = n%i;
+        if(n%i == 0 ){
+            kt = false; //không phải số nguyên tố
+        break;
+        }
+        
     }
-    if(kt == 0)
+    if(kt == true)
     {
-        cout<<"n khong phai so nguyen to";
+        cout<<"n la so nguyen to";
     }
     else
-    cout<<"n la so nguyen to";
+    cout<<"n khong la so nguyen to";
+
 }
