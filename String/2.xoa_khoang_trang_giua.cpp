@@ -24,9 +24,8 @@ int main()
         i++;
     }
 
-    cout<<str;
+    cout<<"Ket qua: "<<str;
 
-   
 
 }
 
