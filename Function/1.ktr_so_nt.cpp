@@ -2,31 +2,41 @@
 
 #include<iostream>
 #include<cmath>
+#include<string>
 using namespace std;
 
-void kiem_tra_so_ngto(int n)
+void input_interger(string label, int &n);
+bool is_prime(int n);
+
+int main()
 {
-    bool ktr = true; //la so nguyen to
+    int n;
+    input_interger("n = ", n);
+
+    if(is_prime(n) == true)
+    {
+        cout<< n <<"la so nguyen to";
+    }
+    else
+    cout<< n <<"khong phai so nguyen to";
+    return 0;
+}
+
+void input_interger(string label, int &n)
+{
+    cout<<label;
+    cin>>n;
+}
+
+bool is_prime(int n)
+{
     for(int i = 2; i<=sqrt(n); i++)
     {
         if(n%i == 0)
         {
-            ktr = false; //khong phai so nguyen to
-            break;
+            return false;
         }
     }
-    if(ktr == true)
-    {
-        cout<<n<<" la so nguyen to"<<endl;
-    }
-    else
-    cout<<n<<" khong phai so nguyen to"<<endl;
-}
 
-int main()
-{
-    int so;
-    cout<<"Nhap so: ";
-    cin>>so;
-    kiem_tra_so_ngto(so);
+    return true;
 }
