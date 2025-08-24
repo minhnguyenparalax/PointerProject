@@ -29,3 +29,7 @@ int main()
     input_interger("nhap n = ", n);
     cout<<"Giai thua n! la: "<<result_factorial(n);
 }
+
+// Kết quả:
+// nhap n = 5
+// Giai thua n! la: 120
