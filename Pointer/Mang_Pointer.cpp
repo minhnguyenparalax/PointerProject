@@ -2,7 +2,7 @@
 using namespace std;
 int main()
 {
-    int a[3];
+
 
     int *b = new int[3];
 
@@ -10,12 +10,6 @@ int main()
     {
         b[i] = 1;
     }
-
-    for(int i = 0; i<3; i++)
-    {
-        cout<< b[i] <<" ";
-    }
-    cout<<endl;
 
     cout<<"Cac phan tu truoc khi them: "<<endl;
 
