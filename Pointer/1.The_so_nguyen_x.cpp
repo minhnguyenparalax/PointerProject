@@ -10,7 +10,7 @@ using namespace std;
 void input_interger(string label, int &n);
 void input_array(string label, int* arr, int size);
 void print_array(int *arr, int size);
-void push(int* &arr, int &size, int new_element);
+void push(int*arr, int &size, int new_element);
 int main()
 {
     int n;
@@ -28,7 +28,7 @@ int main()
     cin>>x;
     push(numbers, n, x);
 
-    cout<<"\nMang sau khi them x là: ";
+    cout<<"\nMang sau khi them x la: ";
     print_array(numbers, n);
     return 0;
 }
@@ -55,7 +55,7 @@ void print_array(int *arr, int size)
     }
 }
 
-void push(int* &arr, int &size, int new_element)
+void push(int*&arr, int &size, int new_element)
 {
     // Tạo một mảng mới có size +1
     //Copy mảng cũ sang mảng mới
