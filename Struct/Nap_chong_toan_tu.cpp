@@ -67,7 +67,7 @@ int main()
  
     cout<<endl;
     Circle c1(2), c2(3);
-
+    cout<<" So sanh c1 va c2: ";
     cout<<(c1 > c2);
     return 0;
 }
