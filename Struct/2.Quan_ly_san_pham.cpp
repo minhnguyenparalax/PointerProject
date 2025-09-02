@@ -17,7 +17,8 @@ struct Product
     friend istream& operator>>(istream &is, Product& products)
     {
         cout<<"Nhap ten: ";
-        getline(is,products.name);
+        is.ignore();
+        getline(is, products.name);
 
         cout<<"Nhap gia: ";
         is>>products.price;
@@ -47,6 +48,7 @@ struct Product
 int show_menu();
 void print_products(Product *products, int size);
 void add_product(Product* &products, int &size);
+void delete_product(Product* &products, int &size);
 
 int main()
 {
@@ -67,9 +69,11 @@ int main()
                 break;
             case 2:
             //them san pham
+                add_product(products, size);
                 break;
             case 3:
             //Xoa san pham
+                delete_product(products, size);
                 break;
             case 0:
                 cout<<"Bye Bye!";
@@ -95,7 +99,7 @@ int show_menu()
 {
     int chose;
     system("cls");
-    cout<<"\n\n";
+    cout<<"\n";
     cout<<"===========MENU=========="<<endl;
     cout<<"1.Xem Danh sach san pham"<<endl;
     cout<<"2.Them san pham"<<endl;
@@ -128,5 +132,62 @@ void print_products(Product *products, int size)
 
 void add_product(Product* &products, int &size)
 {
-    Product new
+    Product new_product;
+    cout<<"Nhap thong tin san pham moi: "<<endl;
+    cin >> new_product;
+
+    int new_size = size + 1;
+    Product *tmp_product = new Product[new_size];
+
+    for(int i = 0; i<size; i++)
+    {
+        tmp_product[i] = products[i];
+    }
+    tmp_product[new_size-1] = new_product;
+    delete[] products;
+    products = tmp_product;
+    size = new_size;
+    cout<<"them san pham thanh cong!"<<endl;
+}
+
+void delete_product(Product* &products, int &size)
+{
+    cout<<"Nhap ten san pham can xoa:"<<endl;
+    string delete_name;
+    cin.ignore();
+    getline(cin, delete_name);
+
+    int delete_index = -1;
+    for(int i =0; i<size; i++)
+    {
+        if(!delete_name.compare(products[i].name))
+        {
+            delete_index = i;
+            break;
+        }
+    }
+
+    if(delete_index == -1)
+    {
+        cout<<"Khong tim thay san pham!"<<endl;
+        return;
+    }
+
+    for(int i =delete_index; i<size -1; i++)
+    {
+        products[i] = products[i+1];
+    }
+    size--;
+
+    Product* tmp_product = new Product[size];
+    for(int i =0; i<size; i++)
+    {
+        tmp_product[i] = products[i];
+    }
+    delete[] products;
+
+    products = tmp_product;
+
+    cout<<"Xoa thanh cong"<<endl;
+
 }
