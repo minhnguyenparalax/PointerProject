@@ -113,6 +113,7 @@ int show_menu()
     return chose;
 }
 
+
 void print_products(Product *products, int size)
 {
     if(size == 0)
