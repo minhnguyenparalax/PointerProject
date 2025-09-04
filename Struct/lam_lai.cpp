@@ -7,6 +7,7 @@
 #include<string>
 using namespace std;
 
+//1.Struct
 struct Product
 {
     string name;
@@ -16,6 +17,7 @@ struct Product
     friend istream& operator>>(istream &is, Product& products)
     {
         cout<<"Nhap ten: ";
+        is.ignore();
         getline(is, products.name);
         cout<<"Nhap gia: ";
         is>>products.price;
@@ -37,12 +39,15 @@ struct Product
 
 };
 
+//2.Các hàm nguyên mẫu
 void show_menu_choice(int &choice);
 void chose(string label, int &choice);
 void show_list_product(string label, Product* &products, int size );
-void add_new_product(string label, Product *products, int size);
+void add_new_product(string label, Product *&products, int &size);
 void delete_product(string label,  Product *products, int size);
 
+
+//3.Main
 int main()
 {
 
@@ -71,9 +76,18 @@ int main()
                 cout<<"lua chon khong hop le."<<endl;
             
         }
+        cout<<"Ban co muon tiep tuc khong(1/0): ";
+        bool is_continue;
+        cin>>is_continue;
+        
+        if(!is_continue)
+        {
+
+            cout<<"Deo co nhu cau. Oke!"<<endl;
+            break;
+        }
     }
 }
-
 
 void show_menu_choice(int &choice)
 {
@@ -92,6 +106,7 @@ void chose(string label, int &choice)
 }
 void show_list_product(string label, Product* &products, int size )
 {
+    
     if(size == 0)
     {
         cout<<"Khong co san pham nao"<<endl;
@@ -106,8 +121,32 @@ void show_list_product(string label, Product* &products, int size )
     }
     
 }
-void add_new_product(string label, Product *products, int size)
+void add_new_product(string label, Product* &products, int &size)
 {
+    //Khởi tạo biến new_product 
+    //Nhập các thuộc tính cho new_product
+    //Khởi tạo mảng tmp_product có kích cỡ new_size = size +1
+    //Copy giá trị các phần tử của mảng products tương ứng sang mảng new_product
+    //Gán new_products[new_size-1] = new_product (phần tử mới)
+    //Giải phóng delete[] mảng product
+    //Con trỏ product không trỏ vào Product[size] mà trỏ vào Product[new_size]
+    //kích size tăng thêm 1 đơn vị, size = new_size
+
+    Product new_products;
+    cout<<"\nNhap san pham"<<endl;
+    cin>>new_products;
+
+    int new_size = size+1;
+    Product *tmp_products = new Product[new_size];
+    for(int i = 0; i<size; i++ )
+    {
+        tmp_products[i] = products[i];
+    }
+    tmp_products[new_size-1] = new_products;
+
+    delete[] products;
+    products = tmp_products;
+    size= new_size;
 
 }
 void delete_product(string label, Product *products, int size)
