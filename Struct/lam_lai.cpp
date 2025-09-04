@@ -13,16 +13,40 @@ struct Product
     int price;
     int quantity;
 
+    friend istream& operator>>(istream &is, Product& products)
+    {
+        cout<<"Nhap ten: ";
+        getline(is, products.name);
+        cout<<"Nhap gia: ";
+        is>>products.price;
+        cout<<"Nhap so luong: ";
+        is>>products.quantity;
+        return is;
+    }
+
+    friend ostream& operator<<(ostream &os, Product& products)
+    {
+        cout<<"\nten: ";
+        os<<products.name;
+        cout<<"\ngia: ";
+        os<<products.price;
+        cout<<"\nso luong: ";
+        os<<products.quantity;
+        return os;
+    }
+
 };
 
-void show_menu_choice(int choice);
+void show_menu_choice(int &choice);
 void chose(string label, int &choice);
-void show_list_product(string label, Product *products, int size );
+void show_list_product(string label, Product* &products, int size );
 void add_new_product(string label, Product *products, int size);
 void delete_product(string label,  Product *products, int size);
 
 int main()
 {
+
+    //cout<<p1<<endl;
     int choice;
     int size = 0;
     Product *products = new Product[size];
@@ -30,7 +54,7 @@ int main()
     {
         
         show_menu_choice(choice);
-        
+        system("cls");
         switch(choice)
         {
             case 1:
@@ -51,7 +75,7 @@ int main()
 }
 
 
-void show_menu_choice(int choice)
+void show_menu_choice(int &choice)
 {
 
     cout<<"============MENU===========";
@@ -66,9 +90,21 @@ void chose(string label, int &choice)
     cout<<label;
     cin>>choice;
 }
-void show_list_product(string label, Product *products, int size )
+void show_list_product(string label, Product* &products, int size )
 {
-
+    if(size == 0)
+    {
+        cout<<"Khong co san pham nao"<<endl;
+    }
+    else
+    {
+        cout<<"\nDanh sach san pham la: ";
+        for(int i = 0; i<size; i++)
+        {
+            cout<<products[i]<<endl;
+        }
+    }
+    
 }
 void add_new_product(string label, Product *products, int size)
 {
