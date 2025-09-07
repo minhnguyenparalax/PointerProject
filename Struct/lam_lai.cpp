@@ -154,4 +154,5 @@ void delete_product(string label, Product *products, int size)
     cout<<"Nhap ten san pham can xoa: "<<endl;
     string delete_name;
     cin>>ignore();
+    
 }
