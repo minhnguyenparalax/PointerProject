@@ -43,8 +43,8 @@ struct Product
 void show_menu_choice(int &choice);
 void chose(string label, int &choice);
 void show_list_product(string label, Product* &products, int size );
-void add_new_product(string label, Product *&products, int &size);
-void delete_product(string label,  Product *products, int size);
+void add_new_product(string label, Product* &products, int &size);
+void delete_product(string label,  Product* &products, int &size);
 
 
 //3.Main
@@ -149,10 +149,47 @@ void add_new_product(string label, Product* &products, int &size)
     size= new_size;
 
 }
-void delete_product(string label, Product *products, int size)
+void delete_product(string label, Product *&products, int &size)
 {
-    cout<<"Nhap ten san pham can xoa: "<<endl;
+    cout<<label<<endl;
     string delete_name;
-    cin>>ignore();
+    cin.ignore();
+    getline(cin, delete_name);
+
+    //Vòng for nhập tên sản phầm
+    int delete_index = -1;
+    for (int i = 0; i<size; i++)
+    {
+        if(!delete_name.compare(products[i].name))
+        {
+            delete_index = i;
+            break;
+        }
+    }
+
+    if(delete_index == -1)
+    {
+        cout<<"Khong tim thay san pham!"<<endl;
+        return; 
+    }
+
+    for(int i = delete_index; i<size-1; i++)
+    {
+        products[i] = products[i+1];
+    }
+    size--;
     
+    int new_size = size;
+    Product *tmp_products = new Product[new_size];
+    for(int i = 0; i<size; i++)
+    {
+        tmp_products[i] = products[i];
+    }
+
+    delete[] products;
+    products = tmp_products;
+    
+    cout<<"Xoa thanh cong"<<endl;
+
+
 }
