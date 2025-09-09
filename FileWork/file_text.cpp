@@ -6,15 +6,19 @@ using namespace std;
 int main()
 {
     fstream fs;
-    fs.open("test.txt");
+    fs.open("F:/C++/FileWork/Hello/test.txt");
 
-    if(fs.is_open())
+    if(!fs.is_open())
     {
-        cout<<"mo file thanh công";
+        return 1;
     }
 
-    else
-    {
-        cout<<"mo file khong thanh cong";
-    }
+    //Ghi file
+    
+    //fs<< "Hello Word"; //Ghi trực tiếp vào file txt
+
+    //Đọc file
+    string str;
+    getline(fs,str);
+    cout<<str;
 }
