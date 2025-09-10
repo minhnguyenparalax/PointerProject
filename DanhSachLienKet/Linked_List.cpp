@@ -1,14 +1,14 @@
 //Danh sach lien ket don
 #include <bits/stdc++.h>
 using namespace std;
- 
+
 struct Node{
 	int data;
 	Node *next;
 };
- 
+
 typedef struct Node* node;
- 
+
 //Cap phat dong mot node moi voi du lieu la so nguyen x
 node makeNode(int x){
 	node tmp = new Node();
@@ -16,12 +16,12 @@ node makeNode(int x){
 	tmp->next = NULL; //nullptr
 	return tmp;
 }
- 
+
 //Kiem tra rong
 bool empty(node a){
 	return a == NULL;
 }
- 
+
 int Size(node a){
 	int cnt = 0;
 	while(a != NULL){
@@ -31,7 +31,7 @@ int Size(node a){
 	}
 	return cnt;
 }
- 
+
 //them 1 phan tu vao dau danh sach lien ket
 void insertFirst(node &a, int x){
 	node tmp = makeNode(x);
@@ -43,7 +43,7 @@ void insertFirst(node &a, int x){
 		a = tmp;
 	}
 }
- 
+
 //Them 1 phan tu vao cuoi dslk
 void insertLast(node &a, int x){
 	node tmp = makeNode(x);
@@ -58,7 +58,7 @@ void insertLast(node &a, int x){
 		p->next = tmp;
 	}
 }
- 
+
 //Them 1 phan tu vao giua
 void insertMiddle(node &a, int x, int pos){
 	int n = Size(a);
@@ -79,13 +79,13 @@ void insertMiddle(node &a, int x, int pos){
 	tmp->next = p->next;
 	p->next = tmp;
 }
- 
+
 //xoa phan tu o dau
 void deleteFirst(node &a){
 	if(a == NULL) return;
 	a = a->next;
 }
- 
+
 //xoa phan tu o cuoi
 void deleteLast(node &a){
 	if(a == NULL) return;
