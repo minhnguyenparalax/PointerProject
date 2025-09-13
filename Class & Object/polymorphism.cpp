@@ -45,6 +45,30 @@ public:
     }
 };
 
+
+class Animal
+{
+public:
+    void move()
+    {
+        cout<<"Animal Move"<<endl;
+    }
+};
+
+class Dog : public Animal
+{
+public:
+    void move()
+    {
+        cout<<"Dog move"<<endl;
+    }
+
+    void parent_move()
+    {
+        Animal::move();
+    }
+};
+
 int main() {
     Calculator cal;
 
@@ -56,10 +80,18 @@ int main() {
 
     float result2 = cal.add(c,d);
     cout << "c + d = " << result2 << endl;
-
+    //////////////////////////////////
     Point p1(1,2), p2(3,4);
     Point p3 = p1 + p2;
 
     cout<<"P3 = "<<p3.x<<","<<p3.y<<endl;
+    /////////////////////////////////
+
+    Animal animal;
+    animal.move();
+
+    Dog dog;
+    dog.move();
+    dog.parent_move(); //Truy xuất đến move() của Animal
     return 0;
 }
